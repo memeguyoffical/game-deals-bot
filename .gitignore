@@ -1,0 +1,10 @@
+node_modules/
+.wrangler/
+.dev.vars
+.env
+*.log
+.DS_Store
+Thumbs.db
+
+# dist/worker.js is a build artifact but is committed on purpose: it powers the
+# zero-terminal "paste into the Cloudflare dashboard" install in DEPLOY.md.

@@ -1,0 +1,15 @@
+# Copy this file to .dev.vars and fill in your real values for local development (`npm run dev`).
+# NEVER commit .dev.vars — it contains your bot token.
+
+DISCORD_TOKEN=your-bot-token-here
+DISCORD_PUBLIC_KEY=your-application-public-key-here
+DISCORD_APPLICATION_ID=your-application-id-here
+
+# Protects the one-time /setup command-registration page.
+SETUP_KEY=any-long-random-string
+
+# Optional: comma-separated guild allowlist, e.g. 123456789012345678,234567890123456789
+# ALLOWED_GUILD_IDS=
+
+# Optional: set to 1 to disable /setup entirely.
+# SETUP_DONE=1

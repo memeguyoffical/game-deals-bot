@@ -1,0 +1,34 @@
+{
+  "name": "game-deals-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Discord bot that posts new game deals from Steam, Xbox / Microsoft Store, Steam giveaways, Epic free games and GOG free games. Prices in INR. Runs free on Cloudflare Workers + D1.",
+  "license": "MIT",
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "cloudflare-workers",
+    "d1",
+    "game-deals",
+    "steam",
+    "epic-games",
+    "gog"
+  ],
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:cron": "wrangler dev --test-scheduled",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "register": "node scripts/register-commands.js",
+    "bundle": "esbuild src/index.js --bundle --format=esm --target=es2022 --outfile=dist/worker.js",
+    "db:create": "wrangler d1 create game-deals-db",
+    "db:schema": "wrangler d1 execute game-deals-db --remote --file=./schema.sql",
+    "db:schema:local": "wrangler d1 execute game-deals-db --local --file=./schema.sql",
+    "db:migrate:local": "wrangler d1 migrations apply game-deals-db --local",
+    "db:migrate": "wrangler d1 migrations apply game-deals-db --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

@@ -1,0 +1,56 @@
+name: Bug report
+description: Something is broken in your own deployment
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never paste your `DISCORD_TOKEN`, `DISCORD_PUBLIC_KEY` or `SETUP_KEY`.**
+        Redact the `workers.dev` URL if you do not want it public.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected vs. what you saw.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Ran /deals setup
+        2. Clicked Get Sale Alerts
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: worker-version
+    attributes:
+      label: Commit or version
+      description: Output of `git rev-parse --short HEAD`, if you cloned the repo.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you deploy?
+      options:
+        - Browser only (pasted dist/worker.js)
+        - wrangler deploy
+        - wrangler dev (local)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Output of `npx wrangler tail`, with secrets redacted.
+      render: shell
+    validations:
+      required: false

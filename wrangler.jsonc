@@ -1,0 +1,28 @@
+{
+  "name": "game-deals-bot",
+  "main": "src/index.js",
+  "compatibility_date": "2025-10-01",
+
+  // Deal scanner ticks every 5 min; each server's own scan_minutes setting
+  // decides whether alerts actually post on a given run (free games excepted).
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+
+  // After `npm run db:create`, paste the printed database_id below.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "game-deals-db",
+      "database_id": "PASTE_DATABASE_ID_HERE",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // Non-secret config. Secrets (DISCORD_TOKEN, DISCORD_PUBLIC_KEY) go in via
+  // `npx wrangler secret put ...` — never in this file.
+  "vars": {
+    "DISCORD_APPLICATION_ID": "PASTE_APPLICATION_ID_HERE",
+    "ALERTS_PER_RUN": "10"
+  }
+}
